@@ -53,21 +53,23 @@ export default function ProtocolPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-5">
-      <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ink">
-        <ArrowLeft size={15} /> Басты бетке оралу
-      </Link>
+      <div className="space-y-3 rounded-xl border border-white/40 bg-white/85 p-4 shadow-sm backdrop-blur-md">
+        <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ink">
+          <ArrowLeft size={15} /> Басты бетке оралу
+        </Link>
 
-      <div className="flex flex-wrap items-center gap-2">
-        <Badge tone="brand">{experiment.topic}</Badge>
-        <Badge>{experiment.difficulty}</Badge>
-        <Badge tone={experiment.safetyLevel === "Қауіпсіз" ? "neutral" : "warning"}>
-          {experiment.safetyLevel}
-        </Badge>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge tone="brand">{experiment.topic}</Badge>
+          <Badge>{experiment.difficulty}</Badge>
+          <Badge tone={experiment.safetyLevel === "Қауіпсіз" ? "neutral" : "warning"}>
+            {experiment.safetyLevel}
+          </Badge>
+        </div>
+        <h1 className="flex items-center gap-2 text-xl font-semibold text-ink">
+          <FlaskConical className="text-brand" size={22} />
+          {experiment.title}
+        </h1>
       </div>
-      <h1 className="flex items-center gap-2 text-xl font-semibold text-ink">
-        <FlaskConical className="text-brand" size={22} />
-        {experiment.title}
-      </h1>
 
       <Card title="Мақсаты">
         <p className="text-sm text-ink/90">{experiment.goal}</p>

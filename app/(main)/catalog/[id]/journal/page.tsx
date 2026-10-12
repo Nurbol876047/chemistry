@@ -129,16 +129,18 @@ export default function JournalFormPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-5 pb-10">
-      <Link
-        href={`/catalog/${experiment.id}`}
-        className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ink"
-      >
-        <ArrowLeft size={15} /> Хаттамаға оралу
-      </Link>
+      <div className="space-y-3 rounded-xl border border-white/40 bg-white/85 p-4 shadow-sm backdrop-blur-md">
+        <Link
+          href={`/catalog/${experiment.id}`}
+          className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ink"
+        >
+          <ArrowLeft size={15} /> Хаттамаға оралу
+        </Link>
 
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold text-ink">Бақылау журналы — {experiment.title}</h1>
-        <StatusBadge status={entry.status} />
+        <div className="flex items-center justify-between gap-3">
+          <h1 className="text-xl font-semibold text-ink">Бақылау журналы — {experiment.title}</h1>
+          <StatusBadge status={entry.status} />
+        </div>
       </div>
 
       {(entry.status === "Тексерілді" || entry.status === "Қайта жасау") && (
