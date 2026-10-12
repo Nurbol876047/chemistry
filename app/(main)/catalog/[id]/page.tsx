@@ -53,8 +53,8 @@ export default function ProtocolPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-5">
-      <Link href="/catalog" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ink">
-        <ArrowLeft size={15} /> Каталогқа оралу
+      <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ink">
+        <ArrowLeft size={15} /> Басты бетке оралу
       </Link>
 
       <div className="flex flex-wrap items-center gap-2">

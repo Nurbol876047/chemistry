@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, LogOut, User2 } from "lucide-react";
+import { Menu, LogOut } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 
 const TITLES: { prefix: string; title: string }[] = [
@@ -20,7 +20,7 @@ function titleFor(pathname: string): string {
 export function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { role, studentName, setRole } = useApp();
+  const { setRole } = useApp();
 
   const handleExit = () => {
     setRole(null);
@@ -40,10 +40,6 @@ export function TopBar({ onMenuClick }: { onMenuClick: () => void }) {
         <h1 className="text-base font-semibold text-ink">{titleFor(pathname)}</h1>
       </div>
       <div className="flex items-center gap-3">
-        <div className="hidden items-center gap-2 rounded-full border border-line bg-bg px-3 py-1.5 sm:flex">
-          <User2 size={16} className="text-brand" />
-          <span className="text-sm text-ink">{role === "teacher" ? "Мұғалім" : studentName}</span>
-        </div>
         <button
           onClick={handleExit}
           className="flex items-center gap-1.5 rounded-md border border-line px-3 py-1.5 text-sm text-ink/80 hover:bg-bg"
