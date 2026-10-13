@@ -7,6 +7,7 @@ import { ArrowLeft, FlaskConical } from "lucide-react";
 import { getExperimentById } from "@/data/experiments";
 import { mandatorySupervisionNote } from "@/data/safety";
 import { useApp } from "@/context/AppContext";
+import { ELEMENT_META } from "@/lib/elements";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Checklist, allItemsChecked } from "@/components/ui/Checklist";
@@ -34,6 +35,9 @@ export default function ProtocolPage() {
 
   if (!draft) return null;
 
+  const elementMeta = experiment.element ? ELEMENT_META[experiment.element] : null;
+  const ElementIcon = elementMeta?.icon;
+
   const safetyDone = allItemsChecked(experiment.safetyChecklist, draft.safetyChecked);
 
   const handleMaterialsChange = (checked: Record<string, boolean>) => {
@@ -59,6 +63,13 @@ export default function ProtocolPage() {
         </Link>
 
         <div className="flex flex-wrap items-center gap-2">
+          {elementMeta && ElementIcon && (
+            <span
+              className={`inline-flex items-center gap-1 rounded border px-2 py-0.5 text-xs font-medium whitespace-nowrap ${elementMeta.className}`}
+            >
+              <ElementIcon size={12} /> {elementMeta.label}
+            </span>
+          )}
           <Badge tone="brand">{experiment.topic}</Badge>
           <Badge>{experiment.difficulty}</Badge>
           <Badge tone={experiment.safetyLevel === "Қауіпсіз" ? "neutral" : "warning"}>
@@ -73,6 +84,14 @@ export default function ProtocolPage() {
 
       <Card title="Мақсаты">
         <p className="text-sm text-ink/90">{experiment.goal}</p>
+        {elementMeta && ElementIcon && experiment.elementNote && (
+          <p
+            className={`mt-3 flex items-start gap-2 rounded-md border px-3 py-2 text-xs ${elementMeta.className}`}
+          >
+            <ElementIcon size={14} className="mt-0.5 shrink-0" />
+            <span>{experiment.elementNote}</span>
+          </p>
+        )}
       </Card>
 
       <Card title="Қажетті материалдар" subtitle="Бар / жоқ екенін белгілеңіз">

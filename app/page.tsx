@@ -7,7 +7,7 @@ import {
   FlaskConical,
   Palette,
   Gem,
-  Apple,
+  Wind,
   PenTool,
   Egg,
   Users,
@@ -22,13 +22,13 @@ const ICONS: Record<string, LucideIcon> = {
   "soda-vinegar": FlaskConical,
   "cabbage-indicator": Palette,
   "salt-crystals": Gem,
-  "apple-oxidation": Apple,
+  "apple-oxidation": Wind,
   "invisible-ink": PenTool,
   "eggshell-vinegar": Egg,
 };
 
-const HERO_VIDEO = "/videos/soda-vinegar-result.mp4";
-const HERO_POSTER = "/videos/soda-vinegar-result-poster.jpg";
+const HERO_VIDEO = "/videos/lobby-bg.mp4";
+const HERO_POSTER = "/videos/lobby-bg-poster.jpg";
 
 export default function HomePage() {
   const router = useRouter();
@@ -40,7 +40,7 @@ export default function HomePage() {
   const handlePick = (id: string) => {
     if (!currentRole) setRole("student");
     const exp = experiments.find((e) => e.id === id);
-    if (exp?.resultVideo) {
+    if (exp?.elementVideo || exp?.resultVideo) {
       setActiveId(id);
     } else {
       router.push(`/catalog/${id}`);
@@ -92,7 +92,9 @@ export default function HomePage() {
         </div>
 
         <div className="mx-auto flex w-full max-w-4xl flex-wrap items-end justify-center gap-3 md:gap-4">
-          {experiments.map((exp) => {
+          {experiments
+            .filter((exp) => exp.id !== "eggshell-vinegar" && exp.id !== "cabbage-indicator")
+            .map((exp) => {
             const Icon = ICONS[exp.id] ?? FlaskConical;
             return (
               <button
@@ -112,8 +114,12 @@ export default function HomePage() {
         </div>
       </div>
 
-      {active?.resultVideo && (
-        <BlockPreviewVideo src={active.resultVideo} title={active.title} onDone={handleDone} />
+      {(active?.elementVideo || active?.resultVideo) && (
+        <BlockPreviewVideo
+          src={active.elementVideo ?? active.resultVideo!}
+          title={active.title}
+          onDone={handleDone}
+        />
       )}
     </main>
   );

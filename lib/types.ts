@@ -9,6 +9,8 @@ export type EntryStatus =
 
 export type Difficulty = "Жеңіл" | "Орташа";
 
+export type Element = "су" | "от" | "жер" | "ауа";
+
 export type SafetyLevel = "Қауіпсіз" | "Ересектің қатысуымен";
 
 export interface ExperimentStep {
@@ -32,6 +34,9 @@ export interface Experiment {
   reactionEquation?: string;
   expectedResult: string;
   resultVideo?: string;
+  elementVideo?: string;
+  element?: Element;
+  elementNote?: string;
   hasPhChart?: boolean;
   phPresetSubstances?: string[];
 }

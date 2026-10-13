@@ -10,12 +10,12 @@ export function ExperimentBackground() {
     <div className="fixed inset-0 z-0 overflow-hidden bg-bg" aria-hidden>
       <div
         className="absolute inset-0 bg-cover bg-center md:hidden"
-        style={{ backgroundImage: "url(/videos/experiment-bg-poster.jpg)" }}
+        style={{ backgroundImage: "url(/videos/lobby-bg-poster.jpg)" }}
       />
       <video
         className="absolute inset-0 hidden h-full w-full object-cover md:block"
-        src="/videos/experiment-bg.mp4"
-        poster="/videos/experiment-bg-poster.jpg"
+        src="/videos/lobby-bg.mp4"
+        poster="/videos/lobby-bg-poster.jpg"
         autoPlay
         muted
         loop
@@ -23,7 +23,7 @@ export function ExperimentBackground() {
         preload="auto"
         disablePictureInPicture
       />
-      <div className="absolute inset-0 bg-white/15" />
+      <div className="absolute inset-0 bg-black/10" />
     </div>
   );
 }
