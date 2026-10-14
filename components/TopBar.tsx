@@ -7,7 +7,7 @@ import { useApp } from "@/context/AppContext";
 const TITLES: { prefix: string; title: string }[] = [
   { prefix: "/catalog", title: "Тәжірибелер каталогы" },
   { prefix: "/journal", title: "Менің журналым" },
-  { prefix: "/teacher", title: "Мұғалім панелі" },
+  { prefix: "/teacher", title: "Абдирахимова Рабия" },
   { prefix: "/safety", title: "Қауіпсіздік ережелері" },
   { prefix: "/reference", title: "Анықтамалық" },
 ];
